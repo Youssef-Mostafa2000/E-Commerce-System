@@ -1,2 +1,2 @@
 # E-Commerce-System
-This is an e-commerce application created using flutter framework
+This is a repository for e-commerce application project that'll be created using flutter framework
