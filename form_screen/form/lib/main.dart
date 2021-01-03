@@ -16,7 +16,7 @@ class _FormAppState extends State<FormApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CreditCardDetails(),
+      home: FormScreen(),
     );
   }
 }

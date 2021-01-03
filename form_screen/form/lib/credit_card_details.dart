@@ -53,6 +53,11 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
         title: Text("Credit Card Details"),
         backgroundColor: Colors.purple,
         shadowColor: Colors.grey,
+        automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => null,
+        ),
       ),
     );
   }
