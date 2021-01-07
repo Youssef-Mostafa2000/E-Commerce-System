@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'Addressbook.dart';
 import 'text_field.dart';
 import 'Payment.dart';
+import 'Review.dart';
 void main() {
   runApp(Homepage());
 }
@@ -18,7 +19,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Payment(),
+      home: Review(),
 
     );
   }
