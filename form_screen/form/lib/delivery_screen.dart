@@ -63,8 +63,44 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 50,
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.purple[100],
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
+              margin: EdgeInsets.fromLTRB(4, 4, 4, 6),
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.fromLTRB(80, 5, 80, 5),
+                    child: Text(
+                      'Youssef Mostafa',
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  // floating button of add and the name of client
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 6),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Gamal Abd El-Nasser',
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          ),
+                          Text(
+                            'Al Salam City',
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          ),
+                          Text(
+                            '+201112367131',
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          ),
+                        ],
+                      )), //Text of address
+                ],
+              ),
             ),
             Container(
               decoration: BoxDecoration(

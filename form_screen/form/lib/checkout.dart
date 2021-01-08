@@ -10,6 +10,7 @@ class CheckoutScreen extends StatefulWidget {
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
+  int pageNumber;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

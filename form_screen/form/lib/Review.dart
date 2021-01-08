@@ -94,7 +94,7 @@ class _ReviewState extends State<Review> {
                   decoration: BoxDecoration(
                       color: Colors.purple,
                       borderRadius: BorderRadius.all(Radius.circular(8))),
-                  margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                  margin: EdgeInsets.fromLTRB(0, 4, 0, 0),
                   padding: EdgeInsets.fromLTRB(16, 8, 8, 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,11 +122,42 @@ class _ReviewState extends State<Review> {
                     child: Column(
                       children: [
                         Card(
-                          margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                          margin: EdgeInsets.fromLTRB(5, 2, 5, 5),
                           color: Colors.purple[100],
-                          child: Text(
-                            "The Address From Data Base",
-                            style: TextStyle(fontSize: 25, color: Colors.black),
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                child: Text(
+                                  'Youssef Mostafa',
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              // floating button of add and the name of client
+                              Container(
+                                  child: Column(
+                                children: [
+                                  Text(
+                                    'Gamal Abd El-Nasser',
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black),
+                                  ),
+                                  Text(
+                                    'Al Salam City',
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black),
+                                  ),
+                                  Text(
+                                    '+201112367131',
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black),
+                                  ),
+                                ],
+                              )), //Text of address
+                            ],
                           ),
                         ),
                       ],
