@@ -106,6 +106,10 @@ class _FormScreenState extends State<FormScreen> {
                       padding: EdgeInsets.fromLTRB(0, 4, 0, 12),
                       child: TextFormField(
                         decoration: InputDecoration(
+                          suffixIcon: Icon(
+                            Icons.star_rounded,
+                            size: 15,
+                          ),
                           labelText: 'Phone Number',
                           labelStyle: TextStyle(fontSize: 20),
                           hintText: 'Enter your phone number',
@@ -130,15 +134,22 @@ class _FormScreenState extends State<FormScreen> {
                   width: double.infinity,
                   padding: EdgeInsets.fromLTRB(12, 4, 12, 4),
                   child: Container(
-                      width: 400,
-                      height: 50,
-                      color: Colors.purple,
+                      color: Colors.white,
                       child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
                         color: Colors.purple,
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, 'address_book');
+                        },
                         child: Text(
                           "SAVE",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       )),
                 ),
@@ -148,13 +159,20 @@ class _FormScreenState extends State<FormScreen> {
         ),
       ),
       appBar: AppBar(
-        title: Text("Add New Address"),
+        title: Text(
+          "Add New Address",
+          style: TextStyle(fontSize: 25),
+        ),
         backgroundColor: Colors.purple,
         shadowColor: Colors.grey,
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () => null,
+          onPressed: () {
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            }
+          },
         ),
       ),
     );
@@ -166,6 +184,10 @@ Widget _buildFirstName() {
     padding: EdgeInsets.fromLTRB(12, 12, 12, 20),
     child: TextFormField(
       decoration: InputDecoration(
+          suffixIcon: Icon(
+            Icons.star_rounded,
+            size: 20,
+          ),
           labelText: 'First Name',
           labelStyle: TextStyle(fontSize: 25),
           hintText: 'Enter your first name',
@@ -185,6 +207,10 @@ Widget _buildLastName() {
     padding: EdgeInsets.fromLTRB(12, 4, 12, 20),
     child: TextFormField(
       decoration: InputDecoration(
+          suffixIcon: Icon(
+            Icons.star_rounded,
+            size: 20,
+          ),
           labelText: 'Last Name',
           labelStyle: TextStyle(fontSize: 25),
           hintText: 'Enter your last name',
@@ -204,6 +230,10 @@ Widget _buildAddress() {
     padding: EdgeInsets.fromLTRB(12, 4, 12, 20),
     child: TextFormField(
       decoration: InputDecoration(
+          suffixIcon: Icon(
+            Icons.star_rounded,
+            size: 20,
+          ),
           labelText: 'Address Info',
           labelStyle: TextStyle(fontSize: 25),
           hintText: 'Enter your full address information',
