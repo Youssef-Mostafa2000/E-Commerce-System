@@ -22,46 +22,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:c_e_commerce/screens/product_details.dart';
 import 'package:c_e_commerce/screens/homepage.dart';
 
-class Mobiles extends StatefulWidget {
-  static String id = 'mobiles';
+class clothes extends StatefulWidget {
+  static String id = 'clothes';
   @override
-  _MobilesState createState() => _MobilesState();
+  _clothesState createState() => _clothesState();
 }
 
-class _MobilesState extends State<Mobiles> {
+class _clothesState extends State<clothes> {
   final _auth = Auth();
   FirebaseUser _loggedUser;
   int _tabBarIndex = 0;
   int _bottomBarIndex = 0;
   final _store = Store();
   List<Product> _products;
-  var Mobile_product_list = [
-    {
-      "name": "iphone11",
-      "picture": "images/products/iphone11.jpg",
-      "old_price": 1050,
-      "price": 999,
-    },
-    {
-      "name": "iphone12",
-      "picture": "images/products/iphone12.png",
-      "old_price": 1300,
-      "price": 1270,
-    },
-    {
-      "name": "sumsung M51",
-      "picture": "images/products/sumsung M51.jpg",
-      "old_price": 500,
-      "price": 499,
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     bool isguest = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: new AppBar(
         elevation: 0.0,
-        title: new Text('Mobiles'),
+        title: new Text('Clothes'),
         backgroundColor: Colors.purple,
         actions: <Widget>[
           IconButton(
@@ -100,11 +80,6 @@ class _MobilesState extends State<Mobiles> {
                 height: 10,
               ),
               Text("Welcome"),
-              /*Text(
-                  'email' /*(_loggedUser.email == null)
-                  ? google_email
-                  : (_loggedUser.email)*/
-                  ),*/
             ],
           )),
         ),
@@ -214,7 +189,6 @@ class _MobilesState extends State<Mobiles> {
               }),
         ],
       ),
-
       body: new ListView(
         children: <Widget>[
           // image carouseeeeeeeeeeeeeeeel
@@ -231,7 +205,7 @@ class _MobilesState extends State<Mobiles> {
     );
   }
 
-  Widget productview(bool isguest) {
+  Widget productview(isguest) {
     return StreamBuilder<QuerySnapshot>(
       stream: _store.loadProducts(),
       builder: (context, snapshot) {
@@ -249,7 +223,7 @@ class _MobilesState extends State<Mobiles> {
           }
           _products = [...products];
           products.clear();
-          products = getProductByCategory(cmobiles, _products);
+          products = getProductByCategory(cclothes, _products);
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

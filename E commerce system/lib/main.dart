@@ -3,6 +3,9 @@ import 'package:c_e_commerce/admin/editproduct.dart';
 import 'package:c_e_commerce/admin/vieworders.dart';
 import 'package:c_e_commerce/providers/favourite_item.dart';
 import 'package:c_e_commerce/admin/manageproduct.dart';
+import 'package:c_e_commerce/screens/Clothes_page.dart';
+import 'package:c_e_commerce/screens/Laptops_page.dart';
+import 'package:c_e_commerce/screens/Mobiles_page.dart';
 import 'package:c_e_commerce/screens/complaints.dart';
 import 'package:c_e_commerce/screens/sellerhome.dart';
 import 'package:c_e_commerce/screens/homepage.dart';
@@ -48,6 +51,9 @@ class MyApp extends StatelessWidget {
           ManageProducts.id: (context) => ManageProducts(),
           EditProduct.id: (context) => EditProduct(),
           Complaint.id: (context) => Complaint(),
+          Mobiles.id: (context) => Mobiles(),
+          clothes.id: (context) => clothes(),
+          Laptop.id: (context) => Laptop(),
         },
       ),
     );

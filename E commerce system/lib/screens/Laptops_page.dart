@@ -22,13 +22,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:c_e_commerce/screens/product_details.dart';
 import 'package:c_e_commerce/screens/homepage.dart';
 
-class Mobiles extends StatefulWidget {
-  static String id = 'mobiles';
+class Laptop extends StatefulWidget {
+  static String id = 'laptops';
   @override
-  _MobilesState createState() => _MobilesState();
+  _LaptopState createState() => _LaptopState();
 }
 
-class _MobilesState extends State<Mobiles> {
+class _LaptopState extends State<Laptop> {
   final _auth = Auth();
   FirebaseUser _loggedUser;
   int _tabBarIndex = 0;
@@ -37,20 +37,20 @@ class _MobilesState extends State<Mobiles> {
   List<Product> _products;
   var Mobile_product_list = [
     {
-      "name": "iphone11",
-      "picture": "images/products/iphone11.jpg",
-      "old_price": 1050,
-      "price": 999,
+      "name": "Apple laptops",
+      "picture": "images/products/apple_laptops.jpg",
+      "old_price": 1350,
+      "price": 1300,
     },
     {
-      "name": "iphone12",
-      "picture": "images/products/iphone12.png",
-      "old_price": 1300,
-      "price": 1270,
+      "name": "HPSpectreX360",
+      "picture": "images/products/HPSpectreX360-15.jpg",
+      "old_price": 700,
+      "price": 699,
     },
     {
-      "name": "sumsung M51",
-      "picture": "images/products/sumsung M51.jpg",
+      "name": "HPSpectreX360 min",
+      "picture": "images/products/HP-Spectre-x360.jpg",
       "old_price": 500,
       "price": 499,
     },
@@ -61,7 +61,7 @@ class _MobilesState extends State<Mobiles> {
     return Scaffold(
       appBar: new AppBar(
         elevation: 0.0,
-        title: new Text('Mobiles'),
+        title: new Text('Laptops'),
         backgroundColor: Colors.purple,
         actions: <Widget>[
           IconButton(
@@ -100,11 +100,6 @@ class _MobilesState extends State<Mobiles> {
                 height: 10,
               ),
               Text("Welcome"),
-              /*Text(
-                  'email' /*(_loggedUser.email == null)
-                  ? google_email
-                  : (_loggedUser.email)*/
-                  ),*/
             ],
           )),
         ),
@@ -231,7 +226,7 @@ class _MobilesState extends State<Mobiles> {
     );
   }
 
-  Widget productview(bool isguest) {
+  Widget productview(isguest) {
     return StreamBuilder<QuerySnapshot>(
       stream: _store.loadProducts(),
       builder: (context, snapshot) {
@@ -249,7 +244,7 @@ class _MobilesState extends State<Mobiles> {
           }
           _products = [...products];
           products.clear();
-          products = getProductByCategory(cmobiles, _products);
+          products = getProductByCategory(claptops, _products);
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
