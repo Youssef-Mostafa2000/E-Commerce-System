@@ -17,7 +17,7 @@ void main() {
     return _user;
   });
   final auth = Auth();
-  group('user repository test', () {
+  group('user authentication test', () {
     when(_auth.signInWithEmailAndPassword(email: "email", password: "password"))
         .thenAnswer((_) async {
       _user.add(MockFirebaseUser());
@@ -28,21 +28,13 @@ void main() {
       return null;
     });
     test("sign in with email and password", () async {
-      final _authresult = await auth.signIn("email", "password");
-      expect(_authresult, !null);
-      //expect(auth.status, Status.Authenticated);
+      bool _authresult = await auth.signIn("email", "password");
+      expect(_authresult, true);
     });
 
     test("sing in fails with incorrect email and password", () async {
-      final _authresult = await auth.signIn("mail", "pass");
-      expect(_authresult, !null);
-      //expect(_repo.status, Status.Unauthenticated);
-    });
-
-    test('sign out', () async {
-      final _authresult = await auth.signOut();
-      //print(_authresult);
-      //expect(_authresult, false);
+      bool _authresult = await auth.signIn("mail", "pass");
+      expect(_authresult, false);
     });
   });
 }

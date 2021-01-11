@@ -1,20 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
+enum Status { Uninitialized, Authenticated, Authenticating, Unauthenticated }
+
 class Auth {
   final _auth = FirebaseAuth.instance;
+  Status _status = Status.Uninitialized;
+  Status get status => _status;
 
-  Future<AuthResult> signUp(String email, String password) async {
-    final authResult = await _auth.createUserWithEmailAndPassword(
-        email: email, password: password);
-    FirebaseUser user = authResult.user;
-
-    return authResult;
+  Future<bool> signUp(String email, String password) async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      //FirebaseUser user = authResult.user;
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
-  Future<AuthResult> signIn(String email, String password) async {
-    final authResult = await _auth.signInWithEmailAndPassword(
-        email: email, password: password);
-    return authResult;
+  Future<bool> signIn(String email, String password) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   Future<FirebaseUser> getUser() async {
