@@ -86,8 +86,6 @@ class _CartState extends State<Cart> {
           onPressed: () {
             try {
               Store _store = Store();
-              _store.storeOrders(
-                  {cTotallPrice: price, cAddress: address}, products);
 
               Navigator.pushNamed(
                 context,
@@ -107,12 +105,12 @@ class _CartState extends State<Cart> {
           child: Text('Confirm'),
         )
       ],
-      content: TextField(
+      /*content: TextField(
         onChanged: (value) {
           address = value;
         },
         decoration: InputDecoration(hintText: 'Enter your Address'),
-      ),
+      ),*/
       title: Text('Totall Price  = \$ $price'),
     );
     await showDialog(

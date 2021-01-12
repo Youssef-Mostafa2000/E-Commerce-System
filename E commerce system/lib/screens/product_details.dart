@@ -413,13 +413,15 @@ class _ProductDetailsState extends State<ProductDetails> {
           onPressed: () {
             try {
               Store _store = Store();
-              _store.storeOrder(
-                  {cTotallPrice: price, cAddress: address}, product);
+              /*_store.storeOrder(
+                  {cTotallPrice: price, cAddress: address}, product);*/
+              List<Product> products = [];
+              products.add(product);
               Navigator.pushNamed(
                 context,
                 FormScreen.id,
                 arguments: Order(
-                    totallPrice: price, address: address, products: product),
+                    totallPrice: price, address: address, products: products),
               );
 
               Scaffold.of(context).showSnackBar(SnackBar(

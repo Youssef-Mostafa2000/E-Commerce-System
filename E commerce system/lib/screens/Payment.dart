@@ -87,7 +87,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               "paypal is the faster,safer way to send money,make an online payment ,receive money",
                               style: TextStyle(fontSize: 18),
                             ),
-                            secondary: Image.asset("images/11.png"),
+                            secondary: Image.asset("images/payment/11.png"),
                           ),
                           Visibility(
                             child: Container(
@@ -109,7 +109,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               "Safe money transfer with your bank account",
                               style: TextStyle(fontSize: 18),
                             ),
-                            secondary: Image.asset("images/22.png"),
+                            secondary: Image.asset("images/payment/22.png"),
                           ),
                           Visibility(
                             child: Container(
@@ -131,7 +131,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               "Pay by Cash money when receive the order",
                               style: TextStyle(fontSize: 18),
                             ),
-                            secondary: Image.asset("images/33.png"),
+                            secondary: Image.asset("images/payment/33.png"),
                           ),
                         ]),
                       ), //container bta3 el radio buttoms

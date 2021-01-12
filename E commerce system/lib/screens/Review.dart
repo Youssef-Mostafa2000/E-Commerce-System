@@ -5,6 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Addressbook.dart';
 import 'package:c_e_commerce/models/order.dart';
+import 'package:c_e_commerce/models/singleproduct.dart';
+import 'package:c_e_commerce/services/store.dart';
+import 'package:c_e_commerce/constants.dart';
 
 class Review extends StatefulWidget {
   static String id = 'review';
@@ -33,6 +36,7 @@ class _ReviewState extends State<Review> {
   }
 
   Widget build(BuildContext context) {
+    List<Product> products = order.products;
     return Container(
       child: SingleChildScrollView(
         child: Container(
@@ -72,38 +76,9 @@ class _ReviewState extends State<Review> {
                   child: Container(
                     color: Colors.white,
                     child: Column(
-                      children: [
-                        Card(
-                          margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                          color: Colors.purple,
-                          child: Text(
-                            (order.products[0].pName != null)
-                                ? order.products[0].pName
-                                : '',
-                            style: TextStyle(fontSize: 25),
-                          ),
-                        ),
-                        Card(
-                          margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                          color: Colors.deepPurpleAccent,
-                          child: Text(
-                            (order.products[1].pName != null)
-                                ? order.products[1].pName
-                                : '',
-                            style: TextStyle(fontSize: 25),
-                          ),
-                        ),
-                        Card(
-                          margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                          color: Colors.deepPurple,
-                          child: Text(
-                            (order.products[2].pName != null)
-                                ? order.products[2].pName
-                                : '',
-                            style: TextStyle(fontSize: 25),
-                          ),
-                        ),
-                      ],
+                      children: List.generate(products.length, (index) {
+                        return Text(products[index].pName.toString());
+                      }),
                     ),
                   ),
                 ), //container bta3 el items to buy
@@ -136,9 +111,6 @@ class _ReviewState extends State<Review> {
                         return Text('No Address added yet');
                       }
                       switch (document.connectionState) {
-                        case ConnectionState.waiting:
-                          return CircularProgressIndicator();
-                          break;
                         default:
                           return ListView(
                             shrinkWrap: true,
@@ -335,6 +307,11 @@ class _ReviewState extends State<Review> {
                 Container(
                   child: RaisedButton(
                     onPressed: () {
+                      Store _store = Store();
+                      _store.storeOrders({
+                        cTotallPrice: order.totallPrice,
+                        cAddress: order.address
+                      }, order.products);
                       Scaffold.of(context).showSnackBar(
                           SnackBar(content: Text('Ordered successfuly')));
                     },

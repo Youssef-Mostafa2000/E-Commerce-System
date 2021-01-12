@@ -88,9 +88,9 @@ flutter:
     - images/products/HPSpectreX360-15.jpg
     - images/products/apple_laptops.jpg
     - assets/teddyy_test.flr
-    - images/11.jpg
-    - images/22.jpg
-    - images/33.jpg
+    - images/payment/11.png
+    - images/payment/22.png
+    - images/payment/33.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
