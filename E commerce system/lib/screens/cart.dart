@@ -1,19 +1,29 @@
+import 'package:c_e_commerce/components/products.dart';
+import 'package:c_e_commerce/screens/checkout.dart';
+import 'package:c_e_commerce/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:c_e_commerce/components/cart_componant.dart';
 import 'package:c_e_commerce/models/singleproduct.dart';
 import 'package:c_e_commerce/services/store.dart';
 import 'package:c_e_commerce/constants.dart';
 import 'package:c_e_commerce/providers/cart_item.dart';
+import 'package:c_e_commerce/models/order.dart';
 import 'package:provider/provider.dart';
 import 'package:c_e_commerce/providers/cart_item.dart';
+import 'package:c_e_commerce/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Cart extends StatefulWidget {
   static String id = 'cartscreen';
+
   @override
   _CartState createState() => _CartState();
 }
 
 class _CartState extends State<Cart> {
+  final _auth = Auth();
+  FirebaseUser _loggedUser;
+
   @override
   Widget build(BuildContext context) {
     List<Product> products = Provider.of<CartItem>(context).products;
@@ -58,6 +68,15 @@ class _CartState extends State<Cart> {
     );
   }
 
+  @override
+  void initState() {
+    getCurrenUser();
+  }
+
+  getCurrenUser() async {
+    _loggedUser = await _auth.getUser();
+  }
+
   void showCustomDialog(List<Product> products, context) async {
     var price = getTotallPrice(products);
     var address;
@@ -67,8 +86,13 @@ class _CartState extends State<Cart> {
           onPressed: () {
             try {
               Store _store = Store();
-              _store.storeOrders(
-                  {cTotallPrice: price, cAddress: address}, products);
+
+              Navigator.pushNamed(
+                context,
+                FormScreen.id,
+                arguments: Order(
+                    totallPrice: price, address: address, products: products),
+              );
 
               Scaffold.of(context).showSnackBar(SnackBar(
                 content: Text('Orderd Successfully'),
@@ -81,12 +105,12 @@ class _CartState extends State<Cart> {
           child: Text('Confirm'),
         )
       ],
-      content: TextField(
+      /*content: TextField(
         onChanged: (value) {
           address = value;
         },
         decoration: InputDecoration(hintText: 'Enter your Address'),
-      ),
+      ),*/
       title: Text('Totall Price  = \$ $price'),
     );
     await showDialog(

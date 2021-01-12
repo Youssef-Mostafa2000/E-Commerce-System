@@ -28,6 +28,7 @@ dependencies:
   flutter_rating_bar: ^3.2.0+1
   uuid: ^2.2.0
   provider: ^4.0.5
+  firebase_core: "0.4.4"
 
 
 
@@ -87,6 +88,9 @@ flutter:
     - images/products/HPSpectreX360-15.jpg
     - images/products/apple_laptops.jpg
     - assets/teddyy_test.flr
+    - images/payment/11.png
+    - images/payment/22.png
+    - images/payment/33.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

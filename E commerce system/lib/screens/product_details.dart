@@ -6,6 +6,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:c_e_commerce/providers/cart_item.dart';
 import 'package:provider/provider.dart';
 import 'package:c_e_commerce/models/singleproduct.dart';
+import 'package:c_e_commerce/models/order.dart';
+
+import 'package:c_e_commerce/screens/form_screen.dart';
 import 'package:c_e_commerce/services/store.dart';
 import 'package:c_e_commerce/constants.dart';
 
@@ -410,8 +413,16 @@ class _ProductDetailsState extends State<ProductDetails> {
           onPressed: () {
             try {
               Store _store = Store();
-              _store.storeOrder(
-                  {cTotallPrice: price, cAddress: address}, product);
+              /*_store.storeOrder(
+                  {cTotallPrice: price, cAddress: address}, product);*/
+              List<Product> products = [];
+              products.add(product);
+              Navigator.pushNamed(
+                context,
+                FormScreen.id,
+                arguments: Order(
+                    totallPrice: price, address: address, products: products),
+              );
 
               Scaffold.of(context).showSnackBar(SnackBar(
                 content: Text('Orderd Successfully'),
@@ -425,12 +436,12 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Text('Confirm'),
         )
       ],
-      content: TextField(
+      /*content: TextField(
         onChanged: (value) {
           address = value;
         },
         decoration: InputDecoration(hintText: 'Enter your Address'),
-      ),
+      ),*/
       title: Text('Totall Price  = \$ $price'),
     );
     await showDialog(

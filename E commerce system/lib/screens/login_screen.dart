@@ -27,6 +27,8 @@ class _loginscreenState extends State<loginscreen> {
   bool _isadmin = false;
   final adminpassword = 'admin1234';
   bool isguest = false;
+  final _formKey = GlobalKey<FormState>();
+  final _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +69,7 @@ class _loginscreenState extends State<loginscreen> {
             ),
             SizedBox(height: 20),
             Mytextwidget(
+              key: Key("email-field"),
               onClick: (value) {
                 _email = value;
               },
@@ -75,6 +78,7 @@ class _loginscreenState extends State<loginscreen> {
             ),
             SizedBox(height: 20),
             Mytextwidget(
+              key: Key("password-field"),
               onClick: (value) {
                 _password = value;
               },
@@ -119,6 +123,8 @@ class _loginscreenState extends State<loginscreen> {
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(e.message),
                           ));
+                          // _key.currentState.showSnackBar(
+                          //SnackBar(content: Text("Something is wrong")));
                         }
                       }
                     }
