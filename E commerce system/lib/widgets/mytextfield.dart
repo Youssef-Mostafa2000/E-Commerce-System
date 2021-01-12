@@ -5,9 +5,13 @@ class Mytextwidget extends StatelessWidget {
   final String hint;
   final IconData icon;
   final Function onClick;
+  final key;
 
   Mytextwidget(
-      {@required this.onClick, @required this.hint, @required this.icon});
+      {@required this.onClick,
+      @required this.hint,
+      @required this.icon,
+      @required this.key});
   String error_message(String hint_type) {
     if (hint == 'Enter your name here') {
       return 'name is empty!';
@@ -28,6 +32,7 @@ class Mytextwidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 35),
       child: TextFormField(
+        key: key,
         validator: (value) {
           if (value.isEmpty) {
             return error_message(hint);

@@ -6,6 +6,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:c_e_commerce/providers/cart_item.dart';
 import 'package:provider/provider.dart';
 import 'package:c_e_commerce/models/singleproduct.dart';
+import 'package:c_e_commerce/models/order.dart';
+
+import 'package:c_e_commerce/screens/form_screen.dart';
 import 'package:c_e_commerce/services/store.dart';
 import 'package:c_e_commerce/constants.dart';
 
@@ -412,6 +415,12 @@ class _ProductDetailsState extends State<ProductDetails> {
               Store _store = Store();
               _store.storeOrder(
                   {cTotallPrice: price, cAddress: address}, product);
+              Navigator.pushNamed(
+                context,
+                FormScreen.id,
+                arguments: Order(
+                    totallPrice: price, address: address, products: product),
+              );
 
               Scaffold.of(context).showSnackBar(SnackBar(
                 content: Text('Orderd Successfully'),
