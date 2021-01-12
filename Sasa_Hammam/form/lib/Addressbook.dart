@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -30,11 +29,6 @@ class _AddressprojectState extends State<Addressproject> {
       return true;
     else
       return false;
-  }
-
-  @override
-  void initState() {
-    //selectedAddress = '64JiC4IUlz7aCZsJkAXz';
   }
 
   @override
@@ -188,11 +182,7 @@ class _AddressprojectState extends State<Addressproject> {
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
                                   CheckoutScreen(selectedAddress)));
-                    }
-                    /*() {
-                      Navigator.pop(context, selectedAddress);
-                    }*/
-                    ),
+                    }),
               ),
               Container(
                 color: Colors.white,

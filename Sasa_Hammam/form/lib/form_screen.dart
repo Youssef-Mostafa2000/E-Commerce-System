@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -71,11 +70,6 @@ class _FormScreenState extends State<FormScreen> {
                       contentPadding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                     ),
                     onChanged: dropChangeCity,
-                    /*validator: (value) {
-                      if (value != 0 && value != 1 && value != 2) {
-                        return 'Please choose your city';
-                      }
-                    },*/
                     items: <String>['Cairo', 'Giza', 'Alexandria']
                         .map<DropdownMenuItem>((String value) {
                       return DropdownMenuItem<String>(
@@ -101,11 +95,6 @@ class _FormScreenState extends State<FormScreen> {
                           contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                         ),
                         onChanged: dropChangePhone,
-                        /*validator: (value) {
-                          if (value != 0 && value != 1 && value != 2) {
-                            return 'Please choose your city';
-                          }
-                        },*/
                         items: <String>['+20', '+966', '+967']
                             .map<DropdownMenuItem>((String value) {
                           return DropdownMenuItem<String>(
@@ -138,9 +127,6 @@ class _FormScreenState extends State<FormScreen> {
                           maxLength: 10,
                           keyboardType: TextInputType.number,
                           controller: phoneController,
-                          /*onSaved: (newValue) {
-                            phoneNumber = newValue;
-                          },*/
                           validator: (value) {
                             if (value.isEmpty) {
                               return 'Please enter your phone number';
@@ -180,22 +166,6 @@ class _FormScreenState extends State<FormScreen> {
                             });
                             Navigator.pushNamed(context, 'address_book');
                           }
-                          /*if (_formKey.currentState.validate()) {
-                            await FirebaseFirestore.instance
-                                .collection('customer')
-                                .doc('1')
-                                .set({
-                              'Name': firstNameController.text +
-                                  " " +
-                                  lastNameController.text,
-                              'Address': addressController.text,
-                              'City': dropValCity,
-                              'Phone Number':
-                                  dropValPhone + phoneController.text
-                            });
-                            Navigator.pushReplacementNamed(
-                                context, 'address_book');
-                          }*/
                         },
                         child: Text(
                           "SAVE",
@@ -249,9 +219,6 @@ Widget _buildFirstName() {
           contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
       keyboardType: TextInputType.name,
       controller: firstNameController,
-      /*onSaved: (newValue) {
-        firstName = newValue;
-      },*/
       validator: (value) {
         if (value.isEmpty) {
           return 'Please enter a valid name';
@@ -278,9 +245,6 @@ Widget _buildLastName() {
             contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
         keyboardType: TextInputType.name,
         controller: lastNameController,
-        /*onSaved: (newValue) {
-          lastName = newValue;
-        },*/
         validator: (value) {
           if (value.isEmpty) {
             return 'Please enter a valid name';
@@ -306,9 +270,6 @@ Widget _buildAddress() {
             contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
         keyboardType: TextInputType.name,
         controller: addressController,
-        /*onSaved: (newValue) {
-          address = newValue;
-        },*/
         validator: (value) {
           if (value.isEmpty) {
             return 'Please enter your address';

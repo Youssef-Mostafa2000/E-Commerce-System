@@ -25,7 +25,6 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
   void initState() {
     _user_id = selectedAddress;
     val = '';
-    //selectedAddress = '64JiC4IUlz7aCZsJkAXz';
   }
 
   int radioVal = 0;
@@ -71,11 +70,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
-                        onTap:
-                            /*() {
-                        Navigator.pushNamed(context, 'address_book');
-                      },*/
-                            () async {
+                        onTap: () async {
                           val = await Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'text_field.dart';
-import 'checkout.dart';
 
 class PaymentScreen extends StatefulWidget {
   _PaymentScreenState createState() => _PaymentScreenState();
@@ -46,7 +45,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Container(
           color: Colors.white,
           child: Column(
-            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 child: Padding(
@@ -137,21 +135,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
               ), //container el radio buttoms bta3 el payment method
-              /*Container(
-                alignment: Alignment.bottomCenter,
-                child: RaisedButton(
-                  onPressed: () {},
-                  color: Colors.purple,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.red)),
-                  highlightColor: Colors.white,
-                  child: Text(
-                    "Proceed To Review Page ",
-                    style: TextStyle(fontSize: 25, color: Colors.white),
-                  ),
-                ),
-              ), */ // container bta3 el raised buttom
             ],
           ),
         ),
