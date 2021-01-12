@@ -136,9 +136,6 @@ class _ReviewState extends State<Review> {
                         return Text('No Address added yet');
                       }
                       switch (document.connectionState) {
-                        case ConnectionState.waiting:
-                          return CircularProgressIndicator();
-                          break;
                         default:
                           return ListView(
                             shrinkWrap: true,

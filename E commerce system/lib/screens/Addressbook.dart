@@ -36,11 +36,6 @@ class _AddressprojectState extends State<Addressproject> {
   }
 
   @override
-  void initState() {
-    //selectedAddress = '64JiC4IUlz7aCZsJkAXz';
-  }
-
-  @override
   Widget build(BuildContext context) {
     Order order = ModalRoute.of(context).settings.arguments;
     return Scaffold(
@@ -65,13 +60,7 @@ class _AddressprojectState extends State<Addressproject> {
                     if (!document.hasData) {
                       return Text('No Address added yet');
                     }
-                    /*if (document.data.==) {
-                      return Text('');
-                    }*/
                     switch (document.connectionState) {
-                      case ConnectionState.waiting:
-                        return CircularProgressIndicator();
-                        break;
                       default:
                         return ListView(
                             shrinkWrap: true,
@@ -190,11 +179,7 @@ class _AddressprojectState extends State<Addressproject> {
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
                                   CheckoutScreen(selectedAddress, order)));
-                    }
-                    /*() {
-                      Navigator.pop(context, selectedAddress);
-                    }*/
-                    ),
+                    }),
               ),
               Container(
                 color: Colors.white,

@@ -74,11 +74,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
-                        onTap:
-                            /*() {
-                        Navigator.pushNamed(context, 'address_book');
-                      },*/
-                            () async {
+                        onTap: () async {
                           val = await Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -99,9 +95,6 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                     return Text('No Address added yet');
                   }
                   switch (document.connectionState) {
-                    case ConnectionState.waiting:
-                      return CircularProgressIndicator();
-                      break;
                     case ConnectionState.none:
                       return Text('');
                       break;
