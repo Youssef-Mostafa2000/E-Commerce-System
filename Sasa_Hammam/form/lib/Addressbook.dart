@@ -61,9 +61,6 @@ class _AddressprojectState extends State<Addressproject> {
                       return Text('');
                     }
                     switch (document.connectionState) {
-                      case ConnectionState.waiting:
-                        return CircularProgressIndicator();
-                        break;
                       default:
                         return ListView(
                             shrinkWrap: true,

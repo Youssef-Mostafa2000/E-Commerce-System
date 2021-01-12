@@ -91,9 +91,6 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                     return Text('No Address added yet');
                   }
                   switch (document.connectionState) {
-                    case ConnectionState.waiting:
-                      return CircularProgressIndicator();
-                      break;
                     case ConnectionState.none:
                       return Text('');
                       break;
