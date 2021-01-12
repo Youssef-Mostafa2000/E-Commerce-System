@@ -48,13 +48,18 @@ class _FormScreenState extends State<FormScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.fromLTRB(12, 8, 4, 4),
-                  color: Colors.grey[300],
-                  child: Text(
-                    "ADDRESS DETAILS                                                           * Required",
-                  ),
-                ),
+                    width: double.infinity,
+                    padding: EdgeInsets.fromLTRB(12, 8, 4, 4),
+                    color: Colors.purple[100],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ADDRESS DETAILS',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text('* Required',
+                            style: TextStyle(fontWeight: FontWeight.bold))
+                      ],
+                    )),
                 _buildFirstName(),
                 _buildLastName(),
                 _buildAddress(),
