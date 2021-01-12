@@ -21,6 +21,7 @@ class _ReviewState extends State<Review> {
   final Future<FirebaseApp> _initialization = FirebaseApp.configure();
   bool promoflag = false;
   Order order;
+  String address;
   _ReviewState(this.order);
   int i = 0;
   void promo() {

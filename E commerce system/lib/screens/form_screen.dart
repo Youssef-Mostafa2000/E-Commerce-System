@@ -171,6 +171,9 @@ class _FormScreenState extends State<FormScreen> {
                             side: BorderSide(color: Colors.red)),
                         color: Colors.purple,
                         onPressed: () async {
+                          setState(() {
+                            order.address = addressController.text;
+                          });
                           if (_formKey.currentState.validate()) {
                             final _addresult = await Firestore.instance
                                 .collection('customer')

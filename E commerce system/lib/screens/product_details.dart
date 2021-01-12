@@ -436,12 +436,12 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Text('Confirm'),
         )
       ],
-      content: TextField(
+      /*content: TextField(
         onChanged: (value) {
           address = value;
         },
         decoration: InputDecoration(hintText: 'Enter your Address'),
-      ),
+      ),*/
       title: Text('Totall Price  = \$ $price'),
     );
     await showDialog(
