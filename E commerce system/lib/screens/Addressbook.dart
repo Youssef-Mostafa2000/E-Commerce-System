@@ -9,7 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'checkout.dart';
 import 'package:c_e_commerce/models/order.dart';
 
-String selectedAddress = 'M0TqIbJXkRREUoQV6aD7';
+String selectedAddress = null;
 
 class Addressproject extends StatefulWidget {
   static String id = 'addressproject';
@@ -190,7 +190,8 @@ class _AddressprojectState extends State<Addressproject> {
                   children: [
                     RaisedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, FormScreen.id);
+                        Navigator.pushNamed(context, FormScreen.id,
+                            arguments: order); //edit here
                       },
                       color: Colors.purple,
                       shape: RoundedRectangleBorder(

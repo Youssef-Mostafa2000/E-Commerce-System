@@ -4,20 +4,25 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'Addressbook.dart';
+import 'package:c_e_commerce/models/order.dart';
 
 class DeliveryScreen extends StatefulWidget {
   static String id = 'delivery screen';
+  Order order;
   String _user_id;
-  DeliveryScreen(this._user_id);
+  DeliveryScreen(this._user_id, order);
   @override
-  _DeliveryScreenState createState() => _DeliveryScreenState(_user_id);
+  _DeliveryScreenState createState() => _DeliveryScreenState(_user_id, order);
 }
 
 class _DeliveryScreenState extends State<DeliveryScreen> {
   final Future<FirebaseApp> _initialization = FirebaseApp.configure();
+  Order order;
   String _user_id;
-  String val;
-  _DeliveryScreenState(this._user_id);
+  var val;
+  //Order order = ModalRoute.of(context).settings.arguments;
+
+  _DeliveryScreenState(this._user_id, this.order);
   void radiochecked(int val) {
     setState(() {
       radioVal = val;
@@ -63,9 +68,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                     alignment: Alignment.center,
                     color: Colors.purple,
                     margin: EdgeInsets.fromLTRB(0, 4, 0, 0),
-                    padding: EdgeInsets.fromLTRB(8, 4, 0, 8),
-                    width: 105,
-                    height: 45,
+                    padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
                     child: GestureDetector(
                         child: Text(
                           'CHANGE',
@@ -75,6 +78,11 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                               fontWeight: FontWeight.bold),
                         ),
                         onTap: () async {
+                          // Navigator.pop(context); // edit here
+                          /*val = Navigator.pushNamed<String>(
+                              context, Addressproject.id,
+                              arguments: order);*/
+
                           val = await Navigator.push(
                               context,
                               MaterialPageRoute(
