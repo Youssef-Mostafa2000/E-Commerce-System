@@ -63,6 +63,11 @@ class _FormScreenState extends State<FormScreen> {
                       contentPadding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                     ),
                     onChanged: dropChangeCity,
+                    validator: (value) {
+                      if (value != 0 && value != 1 && value != 2) {
+                        return 'Please choose your city';
+                      }
+                    },
                     items: <String>['Cairo', 'Giza', 'Alexandria']
                         .map<DropdownMenuItem>((String value) {
                       return DropdownMenuItem<String>(
@@ -88,6 +93,11 @@ class _FormScreenState extends State<FormScreen> {
                           contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                         ),
                         onChanged: dropChangePhone,
+                        validator: (value) {
+                          if (value != 0 && value != 1 && value != 2) {
+                            return 'Please choose your city';
+                          }
+                        },
                         items: <String>['+20', '+966', '+967']
                             .map<DropdownMenuItem>((String value) {
                           return DropdownMenuItem<String>(
@@ -105,20 +115,30 @@ class _FormScreenState extends State<FormScreen> {
                       width: 250,
                       padding: EdgeInsets.fromLTRB(0, 4, 0, 12),
                       child: TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Phone Number',
-                          labelStyle: TextStyle(fontSize: 20),
-                          hintText: 'Enter your phone number',
-                          hintStyle: TextStyle(fontSize: 20),
-                          alignLabelWithHint: true,
-                          contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        ),
-                        maxLength: 10,
-                        keyboardType: TextInputType.number,
-                        onSaved: (newValue) {
-                          phoneNumber = newValue;
-                        },
-                      ),
+                          decoration: InputDecoration(
+                            suffixIcon: Icon(
+                              Icons.star_rounded,
+                              size: 15,
+                            ),
+                            labelText: 'Phone Number',
+                            labelStyle: TextStyle(fontSize: 20),
+                            hintText: 'Enter your phone number',
+                            hintStyle: TextStyle(fontSize: 20),
+                            alignLabelWithHint: true,
+                            contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          ),
+                          maxLength: 10,
+                          keyboardType: TextInputType.number,
+                          onSaved: (newValue) {
+                            phoneNumber = newValue;
+                          },
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter your phone number';
+                            } else if (value.length < 9) {
+                              return 'Your number must contain at least 10 digits';
+                            }
+                          }),
                     )
                   ],
                 ),
@@ -130,15 +150,24 @@ class _FormScreenState extends State<FormScreen> {
                   width: double.infinity,
                   padding: EdgeInsets.fromLTRB(12, 4, 12, 4),
                   child: Container(
-                      width: 400,
-                      height: 50,
-                      color: Colors.purple,
+                      color: Colors.white,
                       child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
                         color: Colors.purple,
-                        onPressed: null,
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            Navigator.pushReplacementNamed(
+                                context, 'address_book');
+                          }
+                        },
                         child: Text(
                           "SAVE",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       )),
                 ),
@@ -148,13 +177,20 @@ class _FormScreenState extends State<FormScreen> {
         ),
       ),
       appBar: AppBar(
-        title: Text("Add New Address"),
+        title: Text(
+          "Add New Address",
+          style: TextStyle(fontSize: 25),
+        ),
         backgroundColor: Colors.purple,
         shadowColor: Colors.grey,
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () => null,
+          onPressed: () {
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            }
+          },
         ),
       ),
     );
@@ -166,6 +202,10 @@ Widget _buildFirstName() {
     padding: EdgeInsets.fromLTRB(12, 12, 12, 20),
     child: TextFormField(
       decoration: InputDecoration(
+          suffixIcon: Icon(
+            Icons.star_rounded,
+            size: 20,
+          ),
           labelText: 'First Name',
           labelStyle: TextStyle(fontSize: 25),
           hintText: 'Enter your first name',
@@ -176,6 +216,11 @@ Widget _buildFirstName() {
       onSaved: (newValue) {
         firstName = newValue;
       },
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Please enter a valid name';
+        }
+      },
     ),
   );
 }
@@ -184,18 +229,26 @@ Widget _buildLastName() {
   return Container(
     padding: EdgeInsets.fromLTRB(12, 4, 12, 20),
     child: TextFormField(
-      decoration: InputDecoration(
-          labelText: 'Last Name',
-          labelStyle: TextStyle(fontSize: 25),
-          hintText: 'Enter your last name',
-          hintStyle: TextStyle(fontSize: 20),
-          alignLabelWithHint: true,
-          contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
-      keyboardType: TextInputType.name,
-      onSaved: (newValue) {
-        lastName = newValue;
-      },
-    ),
+        decoration: InputDecoration(
+            suffixIcon: Icon(
+              Icons.star_rounded,
+              size: 20,
+            ),
+            labelText: 'Last Name',
+            labelStyle: TextStyle(fontSize: 25),
+            hintText: 'Enter your last name',
+            hintStyle: TextStyle(fontSize: 20),
+            alignLabelWithHint: true,
+            contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
+        keyboardType: TextInputType.name,
+        onSaved: (newValue) {
+          lastName = newValue;
+        },
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Please enter a valid name';
+          }
+        }),
   );
 }
 
@@ -203,18 +256,26 @@ Widget _buildAddress() {
   return Container(
     padding: EdgeInsets.fromLTRB(12, 4, 12, 20),
     child: TextFormField(
-      decoration: InputDecoration(
-          labelText: 'Address Info',
-          labelStyle: TextStyle(fontSize: 25),
-          hintText: 'Enter your full address information',
-          hintStyle: TextStyle(fontSize: 20),
-          alignLabelWithHint: true,
-          contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
-      keyboardType: TextInputType.name,
-      onSaved: (newValue) {
-        address = newValue;
-      },
-    ),
+        decoration: InputDecoration(
+            suffixIcon: Icon(
+              Icons.star_rounded,
+              size: 20,
+            ),
+            labelText: 'Address Info',
+            labelStyle: TextStyle(fontSize: 25),
+            hintText: 'Enter your full address information',
+            hintStyle: TextStyle(fontSize: 20),
+            alignLabelWithHint: true,
+            contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0)),
+        keyboardType: TextInputType.name,
+        onSaved: (newValue) {
+          address = newValue;
+        },
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Please enter your address';
+          }
+        }),
   );
 }
 
