@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:c_e_commerce/models/order.dart';
+import 'package:c_e_commerce/screens/product_details.dart';
 
 String firstName = "";
 String lastName = "";
@@ -45,7 +46,7 @@ class _FormScreenState extends State<FormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Order order = ModalRoute.of(context).settings.arguments;
+    //Order order = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -99,7 +100,7 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       height: 100,
@@ -122,9 +123,6 @@ class _FormScreenState extends State<FormScreen> {
                           );
                         }).toList(),
                       ),
-                    ),
-                    SizedBox(
-                      width: 20,
                     ),
                     Container(
                       height: 80,
@@ -186,6 +184,7 @@ class _FormScreenState extends State<FormScreen> {
                               'Phone Number':
                                   dropValPhone + phoneController.text
                             });
+
                             Navigator.pushNamed(
                               context,
                               Addressproject.id,

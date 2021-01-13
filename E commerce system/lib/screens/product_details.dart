@@ -9,6 +9,9 @@ import 'package:c_e_commerce/models/singleproduct.dart';
 import 'package:c_e_commerce/models/order.dart';
 
 import 'package:c_e_commerce/screens/form_screen.dart';
+import 'package:c_e_commerce/screens/Addressbook.dart';
+import 'package:c_e_commerce/screens/checkout.dart';
+
 import 'package:c_e_commerce/services/store.dart';
 import 'package:c_e_commerce/constants.dart';
 
@@ -32,6 +35,8 @@ class ProductDetails extends StatefulWidget {
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
+
+Order order = new Order(totallPrice: 0, products: [], address: 'address');
 
 class _ProductDetailsState extends State<ProductDetails> {
   @override
@@ -259,7 +264,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   color: Colors.purpleAccent,
                   textColor: Colors.black,
                   elevation: 0.1,
-                  child: new Text("Buy now"),
+                  child: new Text("Buy Now"),
                 ),
               ),
               Builder(
@@ -411,27 +416,29 @@ class _ProductDetailsState extends State<ProductDetails> {
       actions: <Widget>[
         MaterialButton(
           onPressed: () {
-            try {
-              Store _store = Store();
-              /*_store.storeOrder(
-                  {cTotallPrice: price, cAddress: address}, product);*/
-              List<Product> products = [];
-              products.add(product);
-              Navigator.pushNamed(
-                context,
-                FormScreen.id,
-                arguments: Order(
-                    totallPrice: price, address: address, products: products),
-              );
+            setState(() {
+              try {
+                List<Product> _products = [];
+                _products.add(product);
+                Store _store = Store();
+                _store.storeOrder(
+                    {cTotallPrice: price, cAddress: address}, product);
+                order.totallPrice = price;
+                order.products = _products;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            CheckoutScreen(selectedAddress, order)));
 
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text('Orderd Successfully'),
-              ));
-              Navigator.pop(context);
-            } catch (ex) {
-              print(ex.message);
-              print(product.psize);
-            }
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text('Orderd Successfully'),
+                ));
+                Navigator.pop(context);
+              } catch (ex) {
+                print(ex.message);
+              }
+            });
           },
           child: Text('Confirm'),
         )

@@ -108,7 +108,7 @@ class _ReviewState extends State<Review> {
                         .document(selectedAddress)
                         .snapshots(),
                     builder: (context, document) {
-                      if (!document.hasData) {
+                      if (!document.hasData || selectedAddress == null) {
                         return Text('No Address added yet');
                       }
                       switch (document.connectionState) {

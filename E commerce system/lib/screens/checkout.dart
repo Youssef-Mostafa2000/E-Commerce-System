@@ -1,3 +1,4 @@
+import 'package:c_e_commerce/screens/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:c_e_commerce/screens/form_screen.dart';
 import 'Payment.dart';
@@ -60,9 +61,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           ),
           body: TabBarView(
             children: [
-              DeliveryScreen(_user_id),
+              DeliveryScreen(_user_id, _order),
               PaymentScreen(),
-              Review(_order)
+              Review(order)
             ],
           ),
         ));
