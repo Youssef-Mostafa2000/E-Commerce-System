@@ -6,12 +6,13 @@ void main() {
     final emailField = find.byValueKey("email-field");
     final passwordField = find.byValueKey("password-field");
     final signInButton = find.text("Sign in");
-    //final userInfoPage = find.byType("UserInfoPage");
+    final homepage = find.byType("HomePage");
     final snackbar = find.byType("SnackBar");
 
     FlutterDriver driver;
     setUpAll(() async {
       driver = await FlutterDriver.connect();
+      await driver.waitUntilFirstFrameRasterized();
     });
 
     tearDownAll(() async {
@@ -26,12 +27,12 @@ void main() {
       await driver.tap(emailField);
       await driver.enterText("youssefahmed@gmail.com");
       await driver.tap(passwordField);
-      await driver.enterText("youssefahmed");
+      await driver.enterText("youssef");
       await driver.tap(signInButton);
       await driver.waitFor(snackbar);
       assert(snackbar != null);
       await driver.waitUntilNoTransientCallbacks();
-      //assert(userInfoPage == null);
+      assert(homepage == null);
     });
 
     test("logs in with correct email and password", () async {
@@ -40,8 +41,8 @@ void main() {
       await driver.tap(passwordField);
       await driver.enterText("youssefahmed");
       await driver.tap(signInButton);
-      //await driver.waitFor(userInfoPage);
-      //assert(userInfoPage != null);
+      await driver.waitFor(homepage);
+      assert(homepage != null);
       await driver.waitUntilNoTransientCallbacks();
     });
   });
