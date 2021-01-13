@@ -1,6 +1,8 @@
 import 'package:c_e_commerce/components/products.dart';
+import 'package:c_e_commerce/screens/Addressbook.dart';
 import 'package:c_e_commerce/screens/checkout.dart';
 import 'package:c_e_commerce/screens/form_screen.dart';
+import 'package:c_e_commerce/screens/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:c_e_commerce/components/cart_componant.dart';
 import 'package:c_e_commerce/models/singleproduct.dart';
@@ -84,23 +86,27 @@ class _CartState extends State<Cart> {
       actions: <Widget>[
         MaterialButton(
           onPressed: () {
-            try {
-              Store _store = Store();
+            setState(() {
+              try {
+                Store _store = Store();
+                _store.storeOrders(
+                    {cTotallPrice: price, cAddress: address}, products);
+                order.totallPrice = price;
+                order.products = products;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            CheckoutScreen(selectedAddress, order)));
 
-              Navigator.pushNamed(
-                context,
-                FormScreen.id,
-                arguments: Order(
-                    totallPrice: price, address: address, products: products),
-              );
-
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text('Orderd Successfully'),
-              ));
-              Navigator.pop(context);
-            } catch (ex) {
-              print(ex.message);
-            }
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text('Orderd Successfully'),
+                ));
+                Navigator.pop(context);
+              } catch (ex) {
+                print(ex.message);
+              }
+            });
           },
           child: Text('Confirm'),
         )
