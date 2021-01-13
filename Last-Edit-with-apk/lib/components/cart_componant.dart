@@ -52,7 +52,13 @@ class single_cart_product extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Product> products = Provider.of<CartItem>(context).products;
     Product _product = ModalRoute.of(context).settings.arguments;
-    return Card(
+    return Container(
+      margin: EdgeInsets.fromLTRB(8, 8, 8, 12),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+      decoration: BoxDecoration(
+          color: Colors.purple[100],
+          borderRadius:
+          BorderRadius.all(Radius.circular(8))),
       child: ListTile(
         ////leading picccccc
         leading: new Image.network(
@@ -61,7 +67,7 @@ class single_cart_product extends StatelessWidget {
           height: 70,
         ),
         // title nameeeeeeeeee
-        title: new Text(cart_product_name),
+        title: new Text(cart_product_name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
         subtitle: new Column(
           children: <Widget>[
             new Row(
@@ -69,25 +75,27 @@ class single_cart_product extends StatelessWidget {
                 // sizeeeeeeeeeeeeeee
                 Padding(
                   padding: const EdgeInsets.all(2.0),
-                  child: new Text("Size"),
+                  child: new Text("Size",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: new Text(
                     cart_product_size.toString(),
-                    style: TextStyle(color: Colors.purpleAccent),
+
+                    style:  TextStyle(color: Colors.purpleAccent,fontWeight: FontWeight.bold,fontSize: 15),),
                   ),
-                ),
+
                 //colorrrrrrrrrrrr
                 new Padding(
                   padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
-                  child: new Text("Color"),
+                  child: new Text("Color",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: new Text(
                     cart_product_color.toString(),
-                    style: TextStyle(color: Colors.purpleAccent),
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15
+                    ,color: Colors.purpleAccent),
                   ),
                 ),
               ],
@@ -98,10 +106,10 @@ class single_cart_product extends StatelessWidget {
               child: new Text(
                 //(cart_product_quantity != null)
                 'quantity:$cart_product_quantity',
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,
                 // : '0',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
+
+
                   color: Colors.purpleAccent,
                 ),
               ),

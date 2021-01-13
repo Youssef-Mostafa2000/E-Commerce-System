@@ -22,19 +22,31 @@ class Sellerhome extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, AddProduct.id);
             },
-            child: Text('Add Product'),
+            child: Text('Add Product',style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.bold),),
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.red)),
           ),
           RaisedButton(
             onPressed: () {
               Navigator.pushNamed(context, ManageProducts.id);
             },
-            child: Text('Edit Product'),
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.red)),
+            child: Text('Edit Product',style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.bold),),
           ),
           RaisedButton(
             onPressed: () {
               Navigator.pushNamed(context, OrdersScreen.id);
             },
-            child: Text('View orders'),
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.red)),
+            child: Text('View orders',style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.bold),),
           )
         ],
       ),

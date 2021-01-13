@@ -31,15 +31,21 @@ class OrdersScreen extends StatelessWidget {
             }
             return ListView.builder(
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.fromLTRB(15, 6, 15, 6),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, OrderDetails.id,
                         arguments: orders[index].documentId);
                   },
                   child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.purple[100],
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(8))),
+                   // margin: EdgeInsets.fromLTRB(8, 8, 8, 6),
+                   // padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
                     height: MediaQuery.of(context).size.height * .2,
-                    color: cSecondaryColor,
+                    //color: cSecondaryColor,
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Column(

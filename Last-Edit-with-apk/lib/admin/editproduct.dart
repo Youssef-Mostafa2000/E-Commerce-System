@@ -83,7 +83,11 @@ class EditProduct extends StatelessWidget {
                       }, product.pId);
                     }
                   },
-                  child: Text('Edit Product'),
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.red)),
+                  child: Text('Edit Product',style: TextStyle(color: Colors.purple,fontSize: 20,fontWeight: FontWeight.bold),),
                 )
               ],
             )

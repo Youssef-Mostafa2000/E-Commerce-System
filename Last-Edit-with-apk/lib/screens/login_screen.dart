@@ -1,13 +1,12 @@
-import 'package:c_e_commerce/screens/sellerhome.dart';
 import 'package:c_e_commerce/screens/homepage.dart';
+import 'package:c_e_commerce/screens/sellerhome.dart';
 import 'package:c_e_commerce/screens/signup_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:c_e_commerce/constants.dart';
-import 'package:c_e_commerce/widgets/mytextfield.dart';
 import 'package:c_e_commerce/services/auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:c_e_commerce/services/google_auth.dart';
+import 'package:c_e_commerce/widgets/mytextfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class loginscreen extends StatefulWidget {
   static String id = 'loginscreen';
@@ -55,12 +54,12 @@ class _loginscreenState extends State<loginscreen> {
                     Positioned(
                       bottom: 0,
                       child: Text(
-                        'Online Shop',
+                        'Stop & Shop',
                         style: TextStyle(
-                          fontFamily: 'Pacifico',
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+                            fontFamily: 'Pacifico',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                     ),
                   ],
@@ -76,7 +75,7 @@ class _loginscreenState extends State<loginscreen> {
               hint: 'Enter your email here',
               icon: Icons.email,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Mytextwidget(
               key: Key("password-field"),
               onClick: (value) {
@@ -85,7 +84,7 @@ class _loginscreenState extends State<loginscreen> {
               hint: 'Enter your password here',
               icon: Icons.lock,
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 100),
               child: Builder(
@@ -127,19 +126,21 @@ class _loginscreenState extends State<loginscreen> {
                       }
                     }
                   },
-                  color: Colors.black,
+                  color: Colors.white,
                   child: Text(
                     'Sign in',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.purple,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 90),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -148,7 +149,7 @@ class _loginscreenState extends State<loginscreen> {
                   await signInWithGoogle();
                   Navigator.pushNamed(context, HomePage.id, arguments: isguest);
                 },
-                color: Colors.black,
+                color: Colors.white,
                 child: new Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -161,7 +162,9 @@ class _loginscreenState extends State<loginscreen> {
                     Text(
                       'Sign in with Google',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.purple,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                   ],
@@ -173,7 +176,7 @@ class _loginscreenState extends State<loginscreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'do not have account?',
+                  'Do not have account?',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,
@@ -181,15 +184,18 @@ class _loginscreenState extends State<loginscreen> {
                 ),
                 SizedBox(width: 10),
                 GestureDetector(
+                  //color: Colors.purple,
+
                   onTap: () {
                     Navigator.pushNamed(context, signupscreen.id);
                   },
                   child: Text(
                     'Register',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                    ),
+                        color: Colors.white,
+                        fontSize: 18,
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -208,11 +214,13 @@ class _loginscreenState extends State<loginscreen> {
                         print(_isadmin);
                       },
                       child: Text(
-                        'i am an seller',
+                        'I am a Seller',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: (_isadmin) ? Colors.purple : Colors.white,
-                        ),
+                            color: (_isadmin) ? Colors.purple : Colors.white,
+                            decoration: TextDecoration.underline,
+
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -224,11 +232,13 @@ class _loginscreenState extends State<loginscreen> {
                         });
                       },
                       child: Text(
-                        'i am an user',
+                        'I am an User',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: _isadmin ? Colors.white : Colors.purple,
-                        ),
+                            color: _isadmin ? Colors.white : Colors.purple,
+                            decoration: TextDecoration.underline,
+
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -241,20 +251,33 @@ class _loginscreenState extends State<loginscreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    bool isguest = true;
-                    Navigator.pushNamed(context, HomePage.id,
-                        arguments: isguest);
-                  },
-                  child: Text(
-                    'Login as guest',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+               Container(
+
+
+
+
+                 child: FlatButton (
+                   color: Colors.white,
+                   shape: RoundedRectangleBorder(
+                       borderRadius: BorderRadius.circular(18.0),
+
+                       side: BorderSide(color: Colors.red)),
+
+
+                    onPressed: () {
+                      bool isguest = true;
+                      Navigator.pushNamed(context, HomePage.id,
+                          arguments: isguest);
+                    },
+                    child: Text(
+                      'Login as guest',
+                      style: TextStyle(
+                          color: Colors.purple,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
+               ),
               ],
             ),
           ],

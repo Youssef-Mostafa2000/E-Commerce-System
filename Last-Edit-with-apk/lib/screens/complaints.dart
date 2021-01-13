@@ -1,4 +1,5 @@
 import 'package:c_e_commerce/models/Complaint.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:c_e_commerce/widgets/mytextfield.dart';
 import 'homepage.dart';
@@ -17,10 +18,10 @@ class _ComplaintState extends State<Complaint> {
   Widget build(BuildContext context) {
     bool isguest = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.purple[100],
       appBar: new AppBar(
-        backgroundColor: Colors.purpleAccent,
-        title: new Text("Hello. What can we help you with?"),
+        backgroundColor: Colors.purple,
+        title: new Text("Hello, How Can We Help You?"),
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back),
           onPressed: () {
@@ -53,7 +54,7 @@ class _ComplaintState extends State<Complaint> {
 
                     child: ClipOval(
                       child: Material(
-                        color: Colors.purpleAccent, // button color
+                        color: Colors.purple, // button color
                         child: InkWell(
                           splashColor: Colors.redAccent, // splash color
                           onTap: () {
@@ -69,12 +70,15 @@ class _ComplaintState extends State<Complaint> {
                             children: <Widget>[
                               Icon(
                                 Icons.airport_shuttle,
+                                color:Colors.white,
+
                                 size: 50,
                               ),
                               // icon
                               Text(
                                 "Your Orders",
                                 style: new TextStyle(
+                                  color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -98,7 +102,7 @@ class _ComplaintState extends State<Complaint> {
                     size: Size(170, 170), // button width and height
                     child: ClipOval(
                       child: Material(
-                        color: Colors.lightBlueAccent, // button color
+                        color: Colors.purple, // button color
                         child: InkWell(
                           splashColor: Colors.redAccent, // splash color
                           onTap: () {
@@ -113,12 +117,14 @@ class _ComplaintState extends State<Complaint> {
                             children: <Widget>[
                               Icon(
                                 Icons.assignment_return,
+                                color:Colors.white,
                                 size: 50,
                               ),
                               // icon
                               Text(
                                 "Returns & Refunds",
                                 style: new TextStyle(
+                                  color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -148,7 +154,7 @@ class _ComplaintState extends State<Complaint> {
                     size: Size(170, 170), // button width and height
                     child: ClipOval(
                       child: Material(
-                        color: Colors.lightGreen, // button color
+                        color: Colors.purple, // button color
                         child: InkWell(
                           splashColor: Colors.redAccent, // splash color
                           onTap: () {
@@ -163,11 +169,14 @@ class _ComplaintState extends State<Complaint> {
                             children: <Widget>[
                               Icon(
                                 Icons.device_unknown,
+                                color:Colors.white,
+
                                 size: 50,
                               ), // icon
                               Text(
                                 "Digital Services",
                                 style: new TextStyle(
+                                  color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -190,7 +199,7 @@ class _ComplaintState extends State<Complaint> {
                     size: Size(170, 170), // button width and height
                     child: ClipOval(
                       child: Material(
-                        color: Colors.orangeAccent, // button color
+                        color: Colors.purple, // button color
                         child: InkWell(
                           splashColor: Colors.redAccent, // splash color
                           onTap: () {
@@ -205,11 +214,14 @@ class _ComplaintState extends State<Complaint> {
                             children: <Widget>[
                               Icon(
                                 Icons.payment,
+                                color:Colors.white,
+
                                 size: 50,
                               ), // icon
                               Text(
                                 "Payment problem",
                                 style: new TextStyle(
+                                  color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -234,7 +246,7 @@ class _ComplaintState extends State<Complaint> {
                 size: Size(170, 170), // button width and height
                 child: ClipOval(
                   child: Material(
-                    color: Colors.yellowAccent, // button color
+                    color: Colors.purple, // button color
                     child: InkWell(
                       splashColor: Colors.redAccent, // splash color
                       onTap: () {
@@ -248,12 +260,15 @@ class _ComplaintState extends State<Complaint> {
                         children: <Widget>[
                           Icon(
                             Icons.call,
+                            color:Colors.white,
+
                             size: 50,
                           ),
                           // icon
                           Text(
                             "Other Problem",
                             style: new TextStyle(
+                              color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                             ),
@@ -284,9 +299,9 @@ class _SendComplaintState extends State<SendComplaint> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.purple[100],
       appBar: new AppBar(
-        backgroundColor: Colors.purpleAccent,
+        backgroundColor: Colors.purple,
         title: new Text("Send your complaints"),
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back),
@@ -340,6 +355,11 @@ class _SendComplaintState extends State<SendComplaint> {
               height: 20,
             ),
             RaisedButton(
+              color: Colors.purple,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+
+                  side: BorderSide(color: Colors.red)),
               onPressed: () {
                 if (_globalKey.currentState.validate()) {
                   _globalKey.currentState.save();
@@ -351,7 +371,7 @@ class _SendComplaintState extends State<SendComplaint> {
                   ));
                 }
               },
-              child: Text('Send'),
+              child: Text('Send',style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),),
             )
           ],
         ),

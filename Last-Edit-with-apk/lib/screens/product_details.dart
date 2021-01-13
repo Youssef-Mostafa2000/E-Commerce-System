@@ -224,7 +224,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   product.pColor = textTyped;
                                 });
                               },
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.name,
                               decoration:
                                   InputDecoration(hintText: 'Enter the color'),
                             ),
@@ -254,17 +254,23 @@ class _ProductDetailsState extends State<ProductDetails> {
           ),
           // +++second buttons++++
           Row(
+
             children: <Widget>[
               //+++  size++++
-              Expanded(
-                child: MaterialButton(
-                  onPressed: () {
-                    showCustomDialog(product, context);
-                  },
-                  color: Colors.purpleAccent,
-                  textColor: Colors.black,
-                  elevation: 0.1,
-                  child: new Text("Buy Now"),
+              Container(
+                child: Expanded(
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.red)),
+                    onPressed: () {
+                      showCustomDialog(product, context);
+                    },
+                    color: Colors.purpleAccent,
+                    textColor: Colors.white,
+                    elevation: 0.1,
+                    child: new Text("Buy Now"),
+                  ),
                 ),
               ),
               Builder(
@@ -340,15 +346,35 @@ class _ProductDetailsState extends State<ProductDetails> {
           ),
           Divider(),
 
-          new TextField(
-            decoration: InputDecoration(
-              hintText: "write your comment",
-              labelText: "Comment",
-              labelStyle: TextStyle(fontSize: 24, color: Colors.black),
-              filled: true,
-              border: OutlineInputBorder(),
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+
+            margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+            // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: new TextField(
+              decoration: InputDecoration(
+                //fillColor: Colors.white,
+                focusColor: Colors.purple,
+
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple, width: 2.0),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple, width: 2.0),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                hintText: "write your comment",
+                labelText: "Comment",
+
+                labelStyle: TextStyle(
+                    fontSize: 24,
+                    color: Colors.purple,
+                    fontWeight: FontWeight.bold),
+                filled: true,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

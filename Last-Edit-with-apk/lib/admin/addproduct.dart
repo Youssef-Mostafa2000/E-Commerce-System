@@ -99,7 +99,11 @@ class _AddProductState extends State<AddProduct> {
                       pseller_email: _loggedUser.email));
                 }
               },
-              child: Text('Add Product'),
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                  side: BorderSide(color: Colors.red)),
+              child: Text('Add Product',style: TextStyle(color: Colors.purple,fontSize: 30,fontWeight: FontWeight.bold),),
             )
           ],
         ),

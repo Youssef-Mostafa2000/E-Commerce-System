@@ -1,28 +1,22 @@
+import 'package:c_e_commerce/constants.dart';
+import 'package:c_e_commerce/models/singleproduct.dart';
 import 'package:c_e_commerce/screens/complaints.dart';
 import 'package:c_e_commerce/screens/favourites.dart';
-import 'package:c_e_commerce/screens/product_search.dart';
-import 'package:flutter/material.dart';
-import 'package:carousel_pro/carousel_pro.dart';
-import 'package:c_e_commerce/components/horizontel_listview.dart';
-import 'package:multilevel_drawer/multilevel_drawer.dart';
-import 'package:c_e_commerce/components/products.dart';
-import 'package:c_e_commerce/models/singleproduct.dart';
 import 'package:c_e_commerce/screens/login_screen.dart';
-import 'package:c_e_commerce/screens/signup_screen.dart';
-import 'package:c_e_commerce/services/google_auth.dart';
-import 'package:c_e_commerce/services/auth.dart';
-import 'cart.dart';
-import 'package:c_e_commerce/services/classify_product.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:c_e_commerce/constants.dart';
-import 'Clothes_page.dart';
-import 'Mobiles_page.dart';
-import 'Laptops_page.dart';
-import 'package:c_e_commerce/services/store.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:c_e_commerce/screens/product_details.dart';
+import 'package:c_e_commerce/screens/product_search.dart';
+import 'package:c_e_commerce/services/auth.dart';
+import 'package:c_e_commerce/services/store.dart';
+import 'package:carousel_pro/carousel_pro.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:multilevel_drawer/multilevel_drawer.dart';
 
-import 'package:provider/provider.dart';
+import 'Clothes_page.dart';
+import 'Laptops_page.dart';
+import 'Mobiles_page.dart';
+import 'cart.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'homePage';
@@ -84,21 +78,21 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
           child: Center(
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new CircleAvatar(
-                backgroundColor: Colors.purple,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text("Welcome"),
-            ],
-          )),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new CircleAvatar(
+                    backgroundColor: Colors.purple,
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text("Welcome"),
+                ],
+              )),
         ),
         children: [
           MLMenuItem(
@@ -341,8 +335,14 @@ class _TextBoxState extends State<TextBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      height: 40,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(20))),
       alignment: Alignment.centerLeft,
-      color: Colors.white,
+      // color: Colors.white,
       child: Builder(
         builder: (context) => TextField(
           textInputAction: TextInputAction.search,
@@ -350,14 +350,24 @@ class _TextBoxState extends State<TextBox> {
             Navigator.pushNamed(
               context,
               ProductSearchScreen.id,
-              arguments: pattern,
-            );
-          },
-          decoration: InputDecoration(
-            hintText: "blazer, dress...",
-            border: InputBorder.none,
-          ),
-        ),
+                  arguments: pattern,
+                );
+              },
+              decoration: InputDecoration(
+                hintText: "blazer, dress...",
+                contentPadding: const EdgeInsets.all(10.0),
+
+                focusColor: Colors.white,
+
+                focusedBorder: OutlineInputBorder(
+
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+              ),
+            ),
       ),
     );
   }

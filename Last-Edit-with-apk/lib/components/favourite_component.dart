@@ -55,7 +55,13 @@ class single_favourite_product extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Product> products = Provider.of<Favouriteitem>(context).products;
     Product _product;
-    return Card(
+    return Container(
+      margin: EdgeInsets.fromLTRB(8, 8, 8, 12),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+      decoration: BoxDecoration(
+          color: Colors.purple[100],
+          borderRadius:
+          BorderRadius.all(Radius.circular(8))),
       child: ListTile(
         ////leading picccccc
         ///
@@ -64,8 +70,8 @@ class single_favourite_product extends StatelessWidget {
         },
         leading: new Image.network(
           cart_product_pic,
-          width: 70,
-          height: 70,
+          width: 80,
+          height: 80,
         ),
         // title nameeeeeeeeee
         title: new Text(cart_product_name),

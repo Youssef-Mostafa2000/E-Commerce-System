@@ -47,9 +47,10 @@ class _signupscreenState extends State<signupscreen> {
                     Positioned(
                       bottom: 0,
                       child: Text(
-                        'Online Shop',
+                        "Stop & Shop",
                         style: TextStyle(
                           fontFamily: 'Pacifico',
+                          color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
@@ -67,7 +68,7 @@ class _signupscreenState extends State<signupscreen> {
               hint: 'Enter your name here',
               icon: Icons.perm_identity,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Mytextwidget(
               onClick: (value) {
                 _email = value;
@@ -75,7 +76,7 @@ class _signupscreenState extends State<signupscreen> {
               hint: 'Enter your email here',
               icon: Icons.email,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Mytextwidget(
               onClick: (value) {
                 _password = value;
@@ -83,7 +84,7 @@ class _signupscreenState extends State<signupscreen> {
               hint: 'Enter your password here',
               icon: Icons.lock,
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 100),
               child: Builder(
@@ -107,19 +108,21 @@ class _signupscreenState extends State<signupscreen> {
                       }
                     }
                   },
-                  color: Colors.black,
+                  color: Colors.white,
                   child: Text(
                     'Sign up',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.purple,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            //SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 90),
+              padding: const EdgeInsets.symmetric(horizontal: 40),
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -128,7 +131,7 @@ class _signupscreenState extends State<signupscreen> {
                   await signInWithGoogle();
                   Navigator.pushNamed(context, HomePage.id, arguments: false);
                 },
-                color: Colors.black,
+                color: Colors.white,
                 child: new Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -141,7 +144,9 @@ class _signupscreenState extends State<signupscreen> {
                     Text(
                       'Sign up with Google',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.purple,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
                       ),
                     ),
                   ],
@@ -167,9 +172,10 @@ class _signupscreenState extends State<signupscreen> {
                   child: Text(
                     'Login',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                    ),
+                        color: Colors.white,
+                        fontSize: 18,
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
