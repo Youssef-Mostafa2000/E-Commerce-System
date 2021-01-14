@@ -1,8 +1,6 @@
 # Stop & Shop 
 
-
-
-[![Build Status](https://img.shields.io/badge/Flutter%26Dart-100%25-blue)](https://img.shields.io/badge/Flutter%26Dart-100%25-green)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Build Status](https://img.shields.io/badge/commit%20activity-15weeks-blue)](https://img.shields.io/badge/commit%20activity-15weeks-blue)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Build Status](https://img.shields.io/badge/contributors-8-green)](https://img.shields.io/badge/contributors-8-green)
+[![Build Status](https://img.shields.io/badge/Flutter%26Dart-100%25-blue)](https://img.shields.io/badge/Flutter%26Dart-100%25-green)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Build Status](https://img.shields.io/badge/commit%20activity-15weeks-blue)](https://img.shields.io/badge/commit%20activity-15weeks-blue)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Build Status](https://img.shields.io/badge/contributors-6-green)](https://img.shields.io/badge/contributors-8-green)
 
 
 This is a Project for the Faculty of Engineering, Ain Shams University, for a course CSE321 - Software Engineering, Where we learned how to apply software concepts on real life project and how to manage it.  
@@ -35,7 +33,6 @@ app-release (2).apk
 | Youssef Abbas Ahmed Abbas | 5 | 
 | Youssef Mostafa Zakaria Youssef | 5 |
 | Youssef Mahmoud Abdulrahman Saleh | 5 | 
-| Yasser Ahmed Mohamed Ahmed | 5 |
 | Mostafa Mohamed Mostafa Hammam | 4 | 
 | Ali Ahmed Ali Hefny | 3 |
 
